@@ -1,0 +1,586 @@
+<!Doctype html>
+<html lang="uk" class="h-full">
+ <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Aurora Base — Колонія на Марсі</title><!-- SDKs -->
+  <script src="/_sdk/element_sdk.js"></script><!-- Google Fonts: Orbitron (tech headings) + Space Grotesk (body) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="style.css"></link>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;900&amp;family=Space+Grotesk:wght@300;400;500;600&amp;display=swap" rel="stylesheet"><!-- Lucide icons -->
+  <script src="https://cdn.jsdelivr.net/npm/lucide@0.263.0/dist/umd/lucide.min.js"></script>
+  <style>
+   
+  </style>
+  <style>body { box-sizing: border-box; }</style>
+  <script src="https://cdn.tailwindcss.com/3.4.17" type="text/javascript"></script>
+  <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
+ </head>
+ <body class="h-full">
+  <div class="app-wrapper"><!-- Animated starry background -->
+   <div class="stars"></div><!-- ============ NAVIGATION ============ -->
+   <header>
+    <nav class="nav" aria-label="Головна навігація">
+     <div class="nav-logo"><span class="nav-logo-dot"></span> <span id="nav-colony-name">AURORA BASE</span>
+     </div>
+<ul class="nav-links">
+  <li><a href="#mission">Місія</a></li>
+  <li><a href="#base">База</a></li>
+  <li><a href="#crew">Команда</a></li>
+  <li><a href="#gallery">Галерея</a></li>
+  <li><a href="#facts">Факти</a></li>
+  <li><a href="#author">Автор</a></li>
+  <li><a href="#join">Приєднання</a></li>
+  <li><a href="#news">Новини</a></li>
+  <li><a href="#video">Відео</a></li>
+</ul>
+    </nav>
+   </header>
+   <!-- ============ HERO ============ -->
+<section class="hero" id="hero">
+
+  <!-- Animated Mars planet -->
+  <div class="mars-planet" aria-hidden="true"></div>
+
+  <div class="hero-content">
+
+    <div class="hero-badge">
+      <span class="hero-badge-dot"></span>
+      <span>Місія 2087 · Активна</span>
+    </div>
+
+    <h1>
+      Життя на червоній планеті
+      <span class="colony-name" id="hero-colony-name">AURORA</span>
+    </h1>
+
+    <p class="hero-tagline" id="hero-tagline">
+      Перша автономна колонія людства у кратері Єзеро. Ми дихаємо під куполами,
+      вирощуємо їжу в марсіанському ґрунті та будуємо майбутнє за 225 мільйонів
+      кілометрів від дому.
+    </p>
+
+    <!-- КНОПКИ -->
+    <div style="display:flex; gap:16px; flex-wrap:wrap; justify-content:center;">
+
+      <a href="#mission" class="hero-cta">
+        <i data-lucide="rocket"></i> Досліджувати колонію
+      </a>
+
+      <a href="#join" class="hero-cta hero-cta-secondary">
+        <i data-lucide="users"></i> Приєднатися до нас
+      </a>
+
+    </div>
+
+  </div>
+
+  <!-- HERO STATS -->
+  <div class="hero-stats">
+
+    <div class="hero-stat">
+      <span class="hero-stat-value">248</span>
+      <span class="hero-stat-label">Колоністів</span>
+    </div>
+
+    <div class="hero-stat">
+      <span class="hero-stat-value">−63°C</span>
+      <span class="hero-stat-label">Середня темп.</span>
+    </div>
+
+    <div class="hero-stat">
+      <span class="hero-stat-value">12</span>
+      <span class="hero-stat-label">Куполів</span>
+    </div>
+
+    <div class="hero-stat">
+      <span class="hero-stat-value">687</span>
+      <span class="hero-stat-label">Днів/рік</span>
+    </div>
+
+  </div>
+
+</section>
+ <section id="mission">
+
+      <div class="section-wrapper">
+
+        <div class="section-eyebrow">
+          01 — НАША МІСІЯ
+        </div>
+
+        <h2 class="section-title">
+          Зробити людство
+          <span class="highlight">мультипланетним</span>
+          видом
+        </h2>
+
+        <p class="section-lede">
+          Aurora Base — це не просто наукова станція.
+          Це перший крок до того, щоб людська цивілізація
+          більше ніколи не залежала від однієї планети.
+          Ми живемо, працюємо та мріємо під марсіанським небом.
+        </p>
+
+        <!-- MISSION GRID -->
+        <div class="mission-grid">
+
+          <!-- CARD 1 -->
+          <article class="mission-card">
+
+            <div class="mission-icon">
+              <i data-lucide="rocket"></i>
+            </div>
+
+            <h3>Дослідження</h3>
+
+            <p>
+              Вивчаємо геологію Марсу, шукаємо сліди
+              давнього життя у висохлих руслах
+              та збираємо зразки для лабораторій
+              по всій Сонячній системі.
+            </p>
+
+          </article>
+
+          <!-- CARD 2 -->
+          <article class="mission-card">
+
+            <div class="mission-icon">
+              <i data-lucide="atom"></i>
+            </div>
+
+            <h3>Наука</h3>
+
+            <p>
+              Проводимо експерименти, неможливі на Землі:
+              низька гравітація, тонка атмосфера та
+              космічна радіація відкривають нові горизонти
+              фізики та біології.
+            </p>
+
+          </article>
+
+          <!-- CARD 3 -->
+          <article class="mission-card">
+
+            <div class="mission-icon">
+              <i data-lucide="leaf"></i>
+            </div>
+
+            <h3>Сталий розвиток</h3>
+
+            <p>
+              Замкнений цикл води, повітря та їжі.
+              Кожен атом на базі переробляється:
+              ми створюємо модель життя,
+              яка згодом змінить і саму Землю.
+            </p>
+
+          </article>
+
+        </div>
+
+      </div>
+
+    </section><!-- ============ BASE / COLONY ============ -->
+    <section id="base" class="base-section">
+     <div class="section-wrapper">
+      <div class="section-eyebrow">
+       02 — Архітектура бази
+      </div>
+      <h2 class="section-title">Купольне місто у <span class="highlight">кратері Єзеро</span></h2>
+      <div class="base-grid"><!-- Visual: CSS-drawn Mars base -->
+       <div class="base-visual" aria-label="Ілюстрація марсіанської бази">
+        <div class="dome-scene">
+         <div class="satellite">
+          🛰️
+         </div>
+         <div class="tower tower-1"></div>
+         <div class="tower tower-2"></div>
+         <div class="dome-tube tube-1"></div>
+         <div class="dome-tube tube-2"></div>
+         <div class="dome dome-1"></div>
+         <div class="dome dome-2"></div>
+         <div class="dome dome-3"></div>
+         <div class="dome-ground"></div>
+        </div>
+       </div><!-- Base info -->
+       <div class="base-info">
+        <h3>12 куполів. Одне майбутнє.</h3>
+        <p>Кожен купол виконує окрему функцію — від житла до гідропонних ферм. Усі вони сполучені герметичними тунелями, тож колоністи можуть вільно переміщатися, не надягаючи скафандр.</p>
+        <ul class="base-features">
+         <li><i data-lucide="home"></i>
+          <div><strong>Житловий сектор</strong> <span>Приватні модулі, спільні зони відпочинку та оранжерея з земними рослинами.</span>
+          </div></li>
+         <li><i data-lucide="flask-conical"></i>
+          <div><strong>Лабораторії</strong> <span>Геологія, астробіологія, матеріалознавство та медицина низької гравітації.</span>
+          </div></li>
+         <li><i data-lucide="sprout"></i>
+          <div><strong>Агрокупол</strong> <span>Гідропоніка забезпечує 92% їжі колонії: картопля, соя, водорості, ягоди.</span>
+          </div></li>
+         <li><i data-lucide="zap"></i>
+          <div><strong>Енергоблок</strong> <span>Міні-ядерний реактор і сонячні панелі загальною потужністю 4 МВт.</span>
+          </div></li>
+        </ul>
+       </div>
+      </div>
+     </div>
+    </section><!-- ============ CREW ============ -->
+    <section id="crew">
+     <div class="section-wrapper">
+      <div class="section-eyebrow">
+       03 — Хто ми
+      </div>
+      <h2 class="section-title">Команда <span class="highlight">Aurora</span></h2>
+      <p class="section-lede">Вісім спеціалістів з шести країн. Кожен з них пройшов 4 роки підготовки та 9 місяців перельоту, щоб стати частиною найамбітнішого експерименту в історії.</p>
+      <div class="crew-grid"><!-- Crew member 1 -->
+       <article class="crew-card">
+       <div class="crew-avatar-wrap">
+  <div class="crew-avatar">ОК</div>
+</div>
+        <h4 class="crew-name">Олена Ковальчук</h4>
+        <div class="crew-role">
+         Командир місії
+        </div>
+        <p class="crew-bio">Пілот, астронавт з 12-річним стажем. Відповідає за безпеку та стратегічні рішення колонії.</p>
+       </article><!-- Crew member 2 -->
+       <article class="crew-card">
+        <div class="crew-avatar">
+         МТ
+        </div>
+        <h4 class="crew-name">Марко Танака</h4>
+        <div class="crew-role">
+         Головний інженер
+        </div>
+        <p class="crew-bio">Архітектор куполів і систем життєзабезпечення. Вміє полагодити все — навіть реактор уночі.</p>
+       </article><!-- Crew member 3 -->
+       <article class="crew-card">
+        <div class="crew-avatar">
+         СР
+        </div>
+        <h4 class="crew-name">Софія Рамірез</h4>
+        <div class="crew-role">
+         Астробіолог
+        </div>
+        <p class="crew-bio">Шукає мікроорганізми в кратерах. Її мрія — знайти перше життя за межами Землі.</p>
+       </article><!-- Crew member 4 -->
+       <article class="crew-card">
+        <div class="crew-avatar">
+         АН
+        </div>
+        <h4 class="crew-name">Амара Нсібу</h4>
+        <div class="crew-role">
+         Лікар колонії
+        </div>
+        <p class="crew-bio">Досліджує вплив низької гравітації на тіло людини. Провела перші пологи на Марсі у 2084.</p>
+       </article>
+      </div>
+     </div>
+    </section><!-- ============ GALLERY ============ -->
+    <section id="gallery">
+     <div class="section-wrapper">
+      <div class="section-eyebrow">
+       04 — Візуальний журнал
+      </div>
+      <h2 class="section-title">Марс очима <span class="highlight">колоністів</span></h2>
+      <p class="section-lede">Знімки з марсоходів, дронів та ілюмінаторів куполів. Кожне зображення — це мить, збережена для історії людства.</p><!-- Gallery built with pure CSS art -->
+      <div class="gallery-grid">
+
+  <div class="gallery-item gal-1" data-label="Схід над Олімпом · 06:42 MSL"></div>
+  <div class="gallery-item gal-2" data-label="Пилова буря · Sector 7"></div>
+  <div class="gallery-item gal-3" data-label="Біолабораторія Aurora"></div>
+  <div class="gallery-item gal-4" data-label="Кратер Гейла · деталь"></div>
+
+  <div class="gallery-item gal-5" data-label="Фобос у нічному небі"></div>
+
+  <div class="gallery-item gal-6" data-label="Ровер Pathfinder-X"></div>
+
+  <div class="gallery-item gal-7" data-label="Марсіанський захід сонця"></div>
+  <div class="gallery-item gal-8" data-label="Дрон-розвідник над каньйоном"></div>
+  <div class="gallery-item gal-9" data-label="Куполи Aurora Base вночі"></div>
+  <div class="gallery-item gal-10" data-label="Замерзлі дюни · полярний сектор"></div>
+
+</div>
+     </div>
+    </section><!-- ============ FACTS ============ -->
+    <section id="facts">
+     <div class="section-wrapper">
+      <div class="section-eyebrow">
+       05 — Цифри що вражають
+      </div>
+      <h2 class="section-title">Марс у <span class="highlight">фактах</span></h2>
+      <p class="section-lede">Щоб зрозуміти, яким є життя в колонії Aurora, варто знати трохи більше про саму планету.</p>
+      <div class="facts-grid">
+       <div class="fact-card">
+        <div class="fact-value">
+         0.38g
+        </div>
+        <div class="fact-label">
+         Гравітація
+        </div>
+        <div class="fact-desc">
+         Людина на Марсі важить утричі менше. Стрибки — як у супергероя.
+        </div>
+       </div>
+       <div class="fact-card">
+        <div class="fact-value">
+         24h 37m
+        </div>
+        <div class="fact-label">
+         Доба (сол)
+        </div>
+        <div class="fact-desc">
+         Марсіанський день майже як земний — організм адаптується швидко.
+        </div>
+       </div>
+       <div class="fact-card">
+        <div class="fact-value">
+         21 км
+        </div>
+        <div class="fact-label">
+         Висота Олімпа
+        </div>
+        <div class="fact-desc">
+         Найбільший вулкан Сонячної системи — втричі вищий за Еверест.
+        </div>
+       </div>
+       <div class="fact-card">
+        <div class="fact-value">
+         95%
+        </div>
+        <div class="fact-label">
+         CO₂ в атмосфері
+        </div>
+        <div class="fact-desc">
+         Тому ми дихаємо лише під куполами або у скафандрах.
+        </div>
+       </div>
+      </div><!-- Timeline of colony history -->
+      <h3 class="section-title" style="margin-top: 100px; text-align: center; font-size: 32px;">Хроніка <span class="highlight">колонізації</span></h3>
+      <div class="timeline">
+       <div class="timeline-item">
+        <div class="timeline-year">
+         2033
+        </div>
+        <div class="timeline-title">
+         Перша висадка
+        </div>
+        <div class="timeline-desc">
+         Чотири астронавти ступили на поверхню Марсу. Місія тривала 90 днів.
+        </div>
+       </div>
+       <div class="timeline-item">
+        <div class="timeline-year">
+         2051
+        </div>
+        <div class="timeline-title">
+         Перший купол
+        </div>
+        <div class="timeline-desc">
+         Роботи-будівельники звели автономний модуль житла діаметром 30 метрів.
+        </div>
+       </div>
+       <div class="timeline-item">
+        <div class="timeline-year">
+         2068
+        </div>
+        <div class="timeline-title">
+         Постійна колонія
+        </div>
+        <div class="timeline-desc">
+         50 колоністів залишились на Марсі назавжди. База Aurora офіційно відкрита.
+        </div>
+       </div>
+       <div class="timeline-item">
+        <div class="timeline-year">
+         2084
+        </div>
+        <div class="timeline-title">
+         Перша дитина
+        </div>
+        <div class="timeline-desc">
+         Народилася Ніка — перша людина, чиєю батьківщиною є Марс.
+        </div>
+       </div>
+       <div class="timeline-item">
+        <div class="timeline-year">
+         2087
+        </div>
+        <div class="timeline-title">
+         Сьогодні
+        </div>
+        <div class="timeline-desc">
+         248 колоністів, 12 куполів, перший урожай пшениці у марсіанському ґрунті.
+        </div>
+       </div>
+      </div>
+     </div>
+
+    </section><!-- ============ AUTHOR ============ -->
+    <section id="author" class="author-section">
+     <div class="section-wrapper">
+      <div class="section-eyebrow" style="justify-content: center;">
+       06 — Про автора
+      </div>
+      <article class="author-card">
+       <div class="author-avatar" id="author-avatar">
+        Д
+       </div>
+       <div class="author-info">
+        <h3 class="author-name" id="author-name">Тюрін Денис</h3>
+        <div class="author-role">
+         Цифровий архітектор · Учень
+        </div>
+        <p class="author-bio">Цей сайт — мій творчий проєкт про колонізацію Марсу. Я вірю, що майбутнє людства буде серед зірок, і хочу показати, як може виглядати перша справжня колонія на іншій планеті. Дизайн, наука та фантазія — поєднані тут за допомогою HTML та CSS.</p>
+        <p class="author-signature">— Створено з любов'ю до космосу ✦</p>
+       </div>
+      </article>
+     </div>
+   <!-- ============ JOIN SECTION ============ -->
+<section id="join" class="join-section">
+
+  <div class="section-wrapper">
+
+    <div class="section-eyebrow">
+      07 — Приєднання
+    </div>
+
+    <h2 class="section-title">
+      Стань частиною <span class="highlight">майбутнього</span>
+    </h2>
+
+    <p class="section-lede">
+      Ми шукаємо нове покоління дослідників, інженерів, біологів, пілотів і архітекторів.
+      Aurora Base — це шанс стати частиною першої справжньої колонії на Марсі.
+    </p>
+
+    <p class="section-lede">
+      Життя тут — це виклик, але й можливість змінити історію людства назавжди.
+      Кожен колоніст — це важлива частина великої місії.
+    </p>
+
+    <div class="join-box" style="background: #1a0d1f; padding: 30px; border: 1px solid #ff5722; border-radius: 10px; text-align:center;">
+
+      <h3 style="margin-bottom: 10px;">Готовий вирушити на Марс?</h3>
+
+      <p style="margin-bottom: 20px;">
+        Подай заявку та приєднуйся до місії Aurora Base вже сьогодні.
+      </p>
+
+      <a href="join.html" class="hero-cta">
+        🚀 Приєднатися до нас
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+<!-- ============ COLONY NEWS ============ -->
+<section id="news" class="news-section">
+
+  <div class="section-wrapper">
+
+    <div class="section-eyebrow">
+      08 — Новини колонії
+    </div>
+
+    <h2 class="section-title">
+      Останні події на <span class="highlight">Aurora Base</span>
+    </h2>
+
+    <p class="section-lede">
+      Живий потік оновлень з Марса. Кожна подія впливає на розвиток колонії та майбутнє людства.
+    </p>
+
+    <div class="news-grid">
+
+      <article class="news-card">
+        <div class="news-date">Сол 687</div>
+        <h3>Успішний врожай пшениці</h3>
+        <p>Агрокупол №3 дав рекордний урожай у марсіанському ґрунті. Колонія вперше повністю забезпечила себе зерном.</p>
+      </article>
+
+      <article class="news-card">
+        <div class="news-date">Сол 684</div>
+        <h3>Пилова буря завершилась</h3>
+        <p>Сектор 4 відновив роботу після 36-годинної бурі. Енергосистема не постраждала.</p>
+      </article>
+
+      <article class="news-card">
+        <div class="news-date">Сол 681</div>
+        <h3>Новий дрон-розвідник</h3>
+        <p>Запущено автономний дрон для дослідження кратера Єзеро на відстані 40 км від бази.</p>
+      </article>
+
+    </div>
+
+  </div>
+
+<!-- ============ MARS VIDEO SECTION ============ -->
+<section id="video" class="video-section">
+
+  <div class="section-wrapper">
+
+    <div class="section-eyebrow">
+      09 — Відео з Марсу
+    </div>
+
+    <h2 class="section-title">
+      Живий погляд на <span class="highlight">планету Марс</span>
+    </h2>
+
+    <p class="section-lede">
+      Це реальні кадри з орбітальних камер і марсоходів, що показують Марс таким,
+      яким його бачать дослідники Aurora Base.
+      Пилові рівнини, червоні горизонти та тиша іншої планети — без фільтрів і без постановки.
+    </p>
+
+    <!-- VIDEO -->
+    <div class="video-frame">
+
+      <iframe
+        src="https://www.youtube.com/embed/D8pnmwOXhoY"
+        title="Mars 4K Video"
+        frameborder="0"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+        allowfullscreen>
+      </iframe>
+
+    </div>
+
+    <p class="video-caption">
+      ⟡ Натисни «play» і занурся в атмосферу Марсу — якби ти стояв на його поверхні.
+    </p>
+
+  </div>
+
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer class="site-footer">
+
+  <div class="footer-inner">
+
+    <p>
+      © 2087 <span class="brand">AURORA BASE</span> · Jezero Crater · Mars
+    </p>
+
+    <p class="footer-small">
+      Передано через Deep Space Network · Затримка сигналу: 12 хв 42 с
+    </p>
+
+  </div>
+
+</footer>
+
+</div> <!-- app-wrapper end -->
+
+<script>
+  lucide.createIcons();
+</script>
+
+ <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'9f55810911595b75',t:'MTc3NzcwODk1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>
