@@ -1,0 +1,1213 @@
+ /* ===== ЗМІННІ CSS (5-колірна палітра) ===== */
+    :root {
+      --c-bg: #0a0510;          /* 1. Глибокий космос */
+      --c-surface: #1a0d1f;     /* 2. Панелі та карти */
+      --c-text: #f4e8dc;        /* 3. Теплий текст */
+      --c-primary: #ff5722;     /* 4. Марсіанська іржа */
+      --c-accent: #f9a826;      /* 5. Пилова золото */
+
+      --font-display: 'Orbitron', sans-serif;
+      --font-body: 'Space Grotesk', sans-serif;
+    }
+
+    /* ===== СКИДАННЯ І БАЗОВІ СТИЛІ ===== */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html, body { height: 100%; width: 100%; }
+    body {
+      font-family: var(--font-body);
+      background: var(--c-bg);
+      color: var(--c-text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    /* ===== ОСНОВНА ОБГОРТКА ===== */
+    .app-wrapper {
+      width: 100%;
+      height: 100%;
+      overflow-y: auto;
+      overflow-x: hidden;
+      scroll-behavior: smooth;
+      background:
+        radial-gradient(ellipse at 20% 10%, rgba(255,87,34,0.15) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 70%, rgba(249,168,38,0.08) 0%, transparent 50%),
+        var(--c-bg);
+    }
+
+    /* ===== ШАРОВИЙ ТЛА ІЗ ЗІРОК ===== */
+    .stars {
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      z-index: 0;
+      background-image:
+        radial-gradient(1px 1px at 20px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 60px 90px, rgba(255,255,255,0.8), transparent),
+        radial-gradient(1px 1px at 130px 50px, #fff, transparent),
+        radial-gradient(1px 1px at 180px 120px, rgba(255,255,255,0.6), transparent),
+        radial-gradient(2px 2px at 230px 80px, rgba(249,168,38,0.8), transparent),
+        radial-gradient(1px 1px at 300px 30px, #fff, transparent),
+        radial-gradient(1px 1px at 350px 150px, rgba(255,255,255,0.7), transparent);
+      background-repeat: repeat;
+      background-size: 400px 200px;
+      animation: зіркиПлив 120s linear infinite;
+      opacity: 0.6;
+    }
+    /* Анімація: зірки повільно рухаються по небу */
+    @keyframes зіркиПлив {
+      from { background-position: 0 0; }
+      to { background-position: 400px 200px; }
+    }
+
+    /* ===== НАВІГАЦІЯ ===== */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 18px 40px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      backdrop-filter: blur(16px);
+      background: rgba(10,5,16,0.7);
+      border-bottom: 1px solid rgba(255,87,34,0.2);
+    }
+    .nav-logo {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 18px;
+      letter-spacing: 2px;
+      color: var(--c-text);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    /* Пульсуюча точка в логотипі */
+    .nav-logo-dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--c-primary);
+      box-shadow: 0 0 12px var(--c-primary);
+      animation: пульс 2s ease-in-out infinite;
+    }
+    /* Анімація пульсу: збільшення та зменшення розміру */
+    @keyframes пульс {
+      0%, 100% { transform: scale(1); opacity: 1; }
+      50% { transform: scale(1.3); opacity: 0.7; }
+    }
+    .nav-links { display: flex; gap: 28px; list-style: none; }
+    .nav-links a {
+      color: var(--c-text);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      position: relative;
+      transition: color 0.3s;
+    }
+    /* Лінія під посиланням, яка з'являється при наведенні */
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: -6px; left: 0;
+      width: 0; height: 2px;
+      background: var(--c-primary);
+      transition: width 0.3s;
+    }
+    .nav-links a:hover { color: var(--c-accent); }
+    .nav-links a:hover::after { width: 100%; }
+
+    /* ===== HÉРОЙ-СЕКЦІЯ ===== */
+    .hero {
+      position: relative;
+      min-height: 100%;
+      padding: 140px 40px 80px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      overflow: hidden;
+      z-index: 1;
+    }
+    /* Марсіанська планета як фон */
+    .mars-planet {
+      position: absolute;
+      right: -200px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 600px;
+      height: 600px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 30%, #ff8a5c 0%, #d94a1f 30%, #8b2a0f 70%, #3d1205 100%);
+      box-shadow:
+        inset -60px -40px 100px rgba(0,0,0,0.6),
+        0 0 120px rgba(255,87,34,0.4),
+        0 0 200px rgba(255,87,34,0.2);
+      opacity: 0.35;
+      animation: обертанняПланети 80s linear infinite;
+      z-index: 0;
+    }
+    /* Текстура Марса (кратери та патерни) */
+    .mars-planet::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse at 20% 40%, rgba(139,42,15,0.8) 0%, transparent 15%),
+        radial-gradient(ellipse at 70% 60%, rgba(61,18,5,0.6) 0%, transparent 20%),
+        radial-gradient(ellipse at 50% 80%, rgba(255,138,92,0.3) 0%, transparent 25%),
+        radial-gradient(ellipse at 80% 20%, rgba(61,18,5,0.5) 0%, transparent 18%),
+        radial-gradient(circle at 15% 25%, rgba(210,100,50,0.4) 0%, transparent 12%),
+        radial-gradient(circle at 75% 35%, rgba(200,90,40,0.35) 0%, transparent 10%),
+        radial-gradient(circle at 45% 65%, rgba(255,120,60,0.3) 0%, transparent 8%);
+    }
+    /* Додаткові кратери та структури */
+    .mars-planet::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      background:
+        radial-gradient(ellipse at 35% 15%, rgba(100,30,10,0.5) 0%, transparent 8%),
+        radial-gradient(ellipse at 88% 72%, rgba(120,50,20,0.45) 0%, transparent 10%),
+        radial-gradient(circle at 60% 45%, rgba(180,70,30,0.3) 0%, transparent 6%);
+    }
+    /* Планета швидко обертається */
+    @keyframes обертанняПланети {
+      from { transform: translateY(-50%) rotate(0deg); }
+      to { transform: translateY(-50%) rotate(360deg); }
+    }
+    .mars-planet { animation: обертанняПланети 25s linear infinite; }
+
+    .hero-content { position: relative; z-index: 2; max-width: 900px; }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 18px;
+      border: 1px solid var(--c-primary);
+      border-radius: 999px;
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--c-accent);
+      margin-bottom: 32px;
+      background: rgba(255,87,34,0.1);
+    }
+    /* Пульсуюча точка в бейджі */
+    .hero-badge-dot {
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      animation: пульс 1.5s ease-in-out infinite;
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(40px, 7vw, 96px);
+      line-height: 0.95;
+      letter-spacing: -2px;
+      margin-bottom: 24px;
+      /* Градієнт від білого до золота та іржі */
+      background: linear-gradient(135deg, #fff 0%, var(--c-accent) 50%, var(--c-primary) 100%);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    /* Назва колонії в окремій строці */
+    .hero h1 .colony-name {
+      display: block;
+      font-size: clamp(56px, 9vw, 140px);
+      margin-top: 8px;
+    }
+    .hero-tagline {
+      font-size: clamp(16px, 1.8vw, 22px);
+      max-width: 640px;
+      margin: 0 auto 40px;
+      color: rgba(244,232,220,0.8);
+      font-weight: 300;
+    }
+    .hero-cta {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      padding: 16px 36px;
+      background: var(--c-primary);
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      text-decoration: none;
+      cursor: pointer;
+      transition: all 0.3s;
+      box-shadow: 0 10px 30px rgba(255,87,34,0.4);
+    }
+    /* Кнопка піднімається і світлає при наведенні */
+    .hero-cta:hover {
+      background: var(--c-accent);
+      transform: translateY(-3px);
+      box-shadow: 0 15px 40px rgba(249,168,38,0.5);
+    }
+
+    /* Hero stats strip */
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      margin-top: 80px;
+      max-width: 900px;
+      width: 100%;
+      position: relative;
+      z-index: 2;
+    }
+    .hero-stat {
+      text-align: left;
+      padding: 20px;
+      border-left: 2px solid var(--c-primary);
+    }
+    .hero-stat-value {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 28px;
+      color: var(--c-accent);
+      display: block;
+    }
+    .hero-stat-label {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: rgba(244,232,220,0.6);
+      margin-top: 4px;
+    }
+    .hero-cta-secondary {
+      background: transparent;
+      border: 1px solid var(--c-accent);
+      color: var(--c-accent);
+      box-shadow: none;
+    }
+    
+    .hero-cta-secondary:hover {
+      background: rgba(249,168,38,0.15);
+    }
+    /* ===== SECTION COMMON ===== */
+    section { position: relative; z-index: 1; }
+    .section-wrapper {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 120px 40px;
+    }
+    .section-eyebrow {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 4px;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-eyebrow::before {
+      content: '';
+      width: 40px;
+      height: 1px;
+      background: var(--c-primary);
+    }
+    .section-title {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: clamp(32px, 5vw, 56px);
+      line-height: 1.05;
+      margin-bottom: 24px;
+      letter-spacing: -1px;
+    }
+    .section-title .highlight {
+      color: var(--c-primary);
+    }
+    .section-lede {
+      font-size: 18px;
+      max-width: 680px;
+      color: rgba(244,232,220,0.75);
+      margin-bottom: 60px;
+      line-height: 1.7;
+    }
+
+    /* ===== МІСІЯ КАРТИ ===== */
+    .mission-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+    .mission-card {
+      background: var(--c-surface);
+      border: 1px solid rgba(255,87,34,0.15);
+      border-radius: 6px;
+      padding: 36px 28px;
+      transition: all 0.4s;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Яскрава лінія зверху карти при наведенні */
+    .mission-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.4s;
+    }
+    /* Карта піднімається при наведенні */
+    .mission-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--c-primary);
+      box-shadow: 0 20px 50px rgba(255,87,34,0.2);
+    }
+    .mission-card:hover::before { transform: scaleX(1); }
+    .mission-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 10px;
+      background: rgba(255,87,34,0.15);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 24px;
+      color: var(--c-primary);
+    }
+    .mission-icon i { width: 28px; height: 28px; }
+    .mission-card h3 {
+      font-family: var(--font-display);
+      font-size: 20px;
+      margin-bottom: 12px;
+      color: var(--c-text);
+    }
+    .mission-card p {
+      font-size: 15px;
+      color: rgba(244,232,220,0.7);
+      line-height: 1.6;
+    }
+
+    /* ===== БАЗА (КОЛОНІЯ) ===== */
+    .base-section {
+      background: linear-gradient(180deg, transparent 0%, rgba(26,13,31,0.5) 50%, transparent 100%);
+    }
+    .base-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 60px;
+      align-items: center;
+    }
+    .base-visual {
+      position: relative;
+      aspect-ratio: 1 / 1;
+      border-radius: 8px;
+      background:
+        radial-gradient(circle at 50% 100%, #8b2a0f 0%, #3d1205 40%, #1a0d1f 70%),
+        var(--c-surface);
+      border: 1px solid rgba(255,87,34,0.3);
+      overflow: hidden;
+      padding: 40px;
+    }
+    /* Ілюстрація куполів побудована чистим CSS */
+    .dome-scene {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    /* Марсіанський грунт внизу */
+    .dome-ground {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 30%;
+      background: linear-gradient(180deg, #a0400f 0%, #5a1f08 100%);
+      border-top: 1px solid rgba(249,168,38,0.2);
+    }
+    /* CSS-куполи: напівкола з градієнтом */
+    .dome {
+      position: absolute;
+      bottom: 28%;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      background: linear-gradient(180deg, rgba(249,168,38,0.25) 0%, rgba(255,87,34,0.15) 100%);
+      border: 2px solid rgba(249,168,38,0.5);
+      box-shadow:
+        inset 0 0 40px rgba(249,168,38,0.2),
+        0 0 30px rgba(249,168,38,0.3);
+    }
+    .dome-1 { width: 35%; height: 35%; left: 15%; }
+    .dome-2 { width: 45%; height: 45%; left: 40%; }
+    .dome-3 { width: 25%; height: 25%; right: 8%; }
+    /* Трубки, що з'єднують куполи */
+    .dome-tube {
+      position: absolute;
+      bottom: 28%;
+      height: 12px;
+      background: linear-gradient(180deg, rgba(249,168,38,0.3), rgba(249,168,38,0.15));
+      border: 1px solid rgba(249,168,38,0.4);
+      border-radius: 6px;
+    }
+    .tube-1 { left: 30%; right: 45%; bottom: 31%; }
+    .tube-2 { left: 60%; right: 25%; bottom: 31%; }
+    /* Вежі базової станції */
+    .tower {
+      position: absolute;
+      bottom: 28%;
+      width: 4px;
+      background: linear-gradient(180deg, var(--c-accent), transparent);
+    }
+    .tower-1 { height: 50%; left: 25%; }
+    .tower-2 { height: 65%; right: 20%; }
+    /* Світло на вершині вежі */
+    .tower::after {
+      content: '';
+      position: absolute;
+      top: -4px;
+      left: -3px;
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--c-accent);
+      box-shadow: 0 0 12px var(--c-accent);
+      animation: пульс 2s ease-in-out infinite;
+    }
+    /* Супутник повільно плаває вгорі */
+    .satellite {
+      position: absolute;
+      top: 10%;
+      right: 15%;
+      font-size: 24px;
+      animation: плавання 6s ease-in-out infinite;
+    }
+    /* Анімація плавання: повільний рух вгору-вниз */
+    @keyframes плавання {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-10px); }
+    }
+
+    .base-info h3 {
+      font-family: var(--font-display);
+      font-size: 32px;
+      margin-bottom: 20px;
+    }
+    .base-info > p {
+      color: rgba(244,232,220,0.75);
+      margin-bottom: 32px;
+      line-height: 1.7;
+    }
+    .base-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+    .base-features li {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+      padding: 16px;
+      background: rgba(26,13,31,0.5);
+      border-left: 3px solid var(--c-primary);
+      border-radius: 0 6px 6px 0;
+    }
+    .base-features i {
+      color: var(--c-accent);
+      width: 22px; height: 22px;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .base-features strong {
+      font-family: var(--font-display);
+      display: block;
+      margin-bottom: 4px;
+      font-size: 14px;
+      letter-spacing: 1px;
+    }
+    .base-features span {
+      font-size: 14px;
+      color: rgba(244,232,220,0.65);
+    }
+
+    /* ===== КОМАНДА ===== */
+    .crew-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .crew-card {
+      background: var(--c-surface);
+      border: 1px solid rgba(255,87,34,0.15);
+      border-radius: 8px;
+      padding: 28px 20px;
+      text-align: center;
+      transition: all 0.4s;
+    }
+    /* Карта піднімається та змінює колір границі при наведенні */
+    .crew-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--c-accent);
+      background: rgba(26,13,31,0.9);
+    }
+    /* Аватар з градієнтом та обертаючої обідком */
+    .crew-avatar {
+      width: 90px;
+      height: 90px;
+      margin: 0 auto 18px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 30px;
+      color: #fff;
+      position: relative;
+    }
+    /* Обертаючий пунктир навколо аватара */
+    .crew-avatar {
+      position: relative;
+      z-index: 1;
+    }
+    
+    .crew-avatar::after {
+      content: '';
+      position: absolute;
+      inset: 0; /* важливо: без зміщення */
+      border-radius: 50%;
+      border: 1px dashed rgba(249,168,38,0.4);
+      box-sizing: border-box;
+      pointer-events: none;
+      animation: spin 20s linear infinite;
+      transform-origin: center;
+    }
+    .crew-name {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 1px;
+      margin-bottom: 6px;
+    }
+    .crew-role {
+      font-size: 11px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      margin-bottom: 14px;
+    }
+    .crew-bio {
+      font-size: 13px;
+      color: rgba(244,232,220,0.65);
+      line-height: 1.5;
+    }
+    @keyframes spin {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    /* ===== ГАЛЕРЕЯ ===== */
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      grid-auto-rows: 180px;
+      gap: 12px;
+    }
+    /* ===== нові gallery items ===== */
+
+.gal-7 {
+  background: linear-gradient(180deg, #ffb347 0%, #ff5722 60%, #1a0d1f 100%);
+}
+
+.gal-8 {
+  background:
+    radial-gradient(circle at 40% 40%, rgba(249,168,38,0.6), transparent 50%),
+    linear-gradient(135deg, #1a0d1f, #2d1426);
+}
+
+.gal-9 {
+  background:
+    radial-gradient(ellipse at bottom, rgba(249,168,38,0.2), transparent 60%),
+    linear-gradient(180deg, #0a0510, #1a0d1f);
+}
+
+.gal-9::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 30% 40%, rgba(255,87,34,0.3), transparent 20%),
+    radial-gradient(circle at 70% 60%, rgba(249,168,38,0.2), transparent 25%);
+}
+
+.gal-10 {
+  background:
+    linear-gradient(180deg, #3d1205, #0a0510),
+    repeating-linear-gradient(45deg, rgba(255,87,34,0.1), transparent 5px);
+}
+
+/* трошки покращимо всі плитки */
+.gallery-item {
+  min-height: 160px;
+}
+    .gallery-item {
+      position: relative;
+      border-radius: 6px;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.4s;
+    }
+    .gallery-item:hover { transform: scale(1.02); }
+    /* Текст показується при наведенні знизу */
+    .gallery-item::after {
+      content: attr(data-label);
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      padding: 16px;
+      background: linear-gradient(180deg, transparent 0%, rgba(10,5,16,0.95) 100%);
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--c-text);
+      opacity: 0;
+      transform: translateY(10px);
+      transition: all 0.4s;
+    }
+    .gallery-item:hover::after { opacity: 1; transform: translateY(0); }
+
+    /* Gallery item 1: big — Sunrise over Olympus Mons */
+    .gal-1 {
+      grid-column: span 2;
+      grid-row: span 2;
+      background:
+        radial-gradient(ellipse at 70% 80%, #ffaa44 0%, transparent 40%),
+        linear-gradient(180deg, #1a0d1f 0%, #4a1505 50%, #8b2a0f 80%, #c24a20 100%);
+    }
+    .gal-1::before {
+      content: '';
+      position: absolute;
+      bottom: 30%;
+      left: 20%; right: 20%;
+      height: 30%;
+      background: linear-gradient(180deg, transparent, #3d1205);
+      clip-path: polygon(0 100%, 15% 40%, 35% 70%, 50% 20%, 70% 60%, 85% 30%, 100% 100%);
+    }
+
+    /* Gallery item 2: Dust storm */
+    .gal-2 {
+      background:
+        repeating-linear-gradient(-20deg, rgba(255,87,34,0.3) 0px, transparent 2px, transparent 8px),
+        linear-gradient(135deg, #8b2a0f, #c24a20);
+    }
+
+    /* Gallery item 3: Lab interior */
+    .gal-3 {
+      background:
+        linear-gradient(180deg, #1a0d1f 0%, #2d1426 100%),
+        radial-gradient(circle at 50% 50%, rgba(249,168,38,0.3), transparent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gal-3::before {
+      content: '⚗️';
+      font-size: 80px;
+      filter: drop-shadow(0 0 20px rgba(249,168,38,0.6));
+    }
+
+    /* Gallery item 4: Crater */
+    .gal-4 {
+      background:
+        radial-gradient(ellipse at center, #3d1205 0%, #8b2a0f 40%, #c24a20 100%);
+    }
+    .gal-4::before {
+      content: '';
+      position: absolute;
+      top: 30%; left: 30%;
+      width: 40%; height: 40%;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 30%, #1a0d1f, #3d1205);
+      box-shadow: inset -10px -10px 20px rgba(0,0,0,0.6);
+    }
+
+    /* Gallery item 5: big — Night sky */
+    .gal-5 {
+      grid-column: span 2;
+      background:
+        radial-gradient(1px 1px at 20% 30%, #fff, transparent),
+        radial-gradient(1px 1px at 60% 60%, #fff, transparent),
+        radial-gradient(2px 2px at 80% 20%, var(--c-accent), transparent),
+        radial-gradient(1px 1px at 40% 80%, #fff, transparent),
+        linear-gradient(180deg, #0a0510 0%, #1a0d1f 60%, #3d1205 100%);
+    }
+    .gal-5::before {
+      content: '';
+      position: absolute;
+      top: 20%; right: 15%;
+      width: 60px; height: 60px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 35% 35%, #d4d4d4, #888 70%, #444);
+      box-shadow: 0 0 30px rgba(255,255,255,0.3);
+    }
+
+    /* Gallery item 6: rover */
+    .gal-6 {
+      background: linear-gradient(180deg, #c24a20 0%, #5a1f08 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .gal-6::before {
+      content: '🚀';
+      font-size: 60px;
+      transform: rotate(-20deg);
+    }
+
+    /* ===== FACTS SECTION ===== */
+    .facts-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+    .fact-card {
+      padding: 32px 24px;
+      background: linear-gradient(135deg, rgba(255,87,34,0.08) 0%, rgba(26,13,31,0.6) 100%);
+      border: 1px solid rgba(249,168,38,0.2);
+      border-radius: 6px;
+      text-align: center;
+      transition: all 0.4s;
+    }
+    .fact-card:hover {
+      border-color: var(--c-accent);
+      background: linear-gradient(135deg, rgba(255,87,34,0.15) 0%, rgba(26,13,31,0.8) 100%);
+      transform: scale(1.03);
+    }
+    .fact-value {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 44px;
+      background: linear-gradient(135deg, var(--c-accent), var(--c-primary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1;
+      margin-bottom: 12px;
+    }
+    .fact-label {
+      font-family: var(--font-display);
+      font-size: 12px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      color: var(--c-text);
+    }
+    .fact-desc {
+      font-size: 13px;
+      color: rgba(244,232,220,0.65);
+      line-height: 1.5;
+    }
+
+    /* ===== ХРОНОЛОГІЯ ===== */
+    .timeline {
+      position: relative;
+      padding: 40px 0;
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    /* Вертикальна лінія посередині */
+    .timeline::before {
+      content: '';
+      position: absolute;
+      top: 0; bottom: 0;
+      left: 50%;
+      width: 2px;
+      background: linear-gradient(180deg, transparent, var(--c-primary) 10%, var(--c-primary) 90%, transparent);
+      transform: translateX(-50%);
+    }
+    .timeline-item {
+      position: relative;
+      width: 50%;
+      padding: 20px 40px;
+    }
+    /* Непарні елементи: праворуч від лінії */
+    .timeline-item:nth-child(odd) {
+      padding-right: 60px;
+      text-align: right;
+    }
+    /* Парні елементи: ліворуч від лінії */
+    .timeline-item:nth-child(even) {
+      margin-left: 50%;
+      padding-left: 60px;
+    }
+    /* Яскрава крапка на лінії часу */
+    .timeline-item::before {
+      content: '';
+      position: absolute;
+      top: 30px;
+      width: 16px; height: 16px;
+      border-radius: 50%;
+      background: var(--c-primary);
+      border: 3px solid var(--c-bg);
+      box-shadow: 0 0 0 2px var(--c-primary), 0 0 20px var(--c-primary);
+    }
+    .timeline-item:nth-child(odd)::before { right: -9px; }
+    .timeline-item:nth-child(even)::before { left: -9px; }
+    .timeline-year {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 28px;
+      color: var(--c-accent);
+      margin-bottom: 8px;
+    }
+    .timeline-title {
+      font-family: var(--font-display);
+      font-size: 15px;
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+    .timeline-desc {
+      font-size: 14px;
+      color: rgba(244,232,220,0.7);
+    }
+  
+    /* ===== СЕКЦІЯ АВТОРА ===== */
+    .author-section {
+      background: linear-gradient(180deg, transparent, rgba(255,87,34,0.05));
+    }
+    .author-card {
+      max-width: 900px;
+      margin: 0 auto;
+      background: var(--c-surface);
+      border: 1px solid rgba(249,168,38,0.3);
+      border-radius: 10px;
+      padding: 50px;
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 40px;
+      align-items: center;
+      position: relative;
+      overflow: hidden;
+    }
+    /* Декоративна світла сфера за карткою */
+    .author-card::before {
+      content: '';
+      position: absolute;
+      top: -50%; right: -20%;
+      width: 300px; height: 300px;
+      background: radial-gradient(circle, rgba(255,87,34,0.2), transparent 70%);
+      border-radius: 50%;
+    }
+    /* Аватар автора з градієнтом */
+    .author-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--c-primary), var(--c-accent));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 48px;
+      color: #fff;
+      position: relative;
+      z-index: 1;
+      box-shadow: 0 10px 40px rgba(255,87,34,0.4);
+    }
+    /* Інформація про автора */
+    .author-info { position: relative; z-index: 1; }
+    .author-name {
+      font-family: var(--font-display);
+      font-size: 28px;
+      margin-bottom: 6px;
+    }
+    .author-role {
+      font-size: 13px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--c-primary);
+      margin-bottom: 18px;
+    }
+    .author-bio {
+      color: rgba(244,232,220,0.75);
+      line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .author-signature {
+      font-family: var(--font-display);
+      font-style: italic;
+      color: var(--c-accent);
+      font-size: 14px;
+    }
+/* ===== NEWS SECTION ===== */
+.news-section {
+  padding: 120px 0;
+}
+
+.news-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.news-card {
+  background: var(--c-surface);
+  border: 1px solid rgba(255,87,34,0.15);
+  border-radius: 8px;
+  padding: 28px;
+  transition: 0.4s;
+  position: relative;
+  overflow: hidden;
+}
+
+.news-card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, var(--c-primary), var(--c-accent));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: 0.4s;
+}
+
+.news-card:hover {
+  transform: translateY(-6px);
+  border-color: var(--c-accent);
+}
+
+.news-card:hover::before {
+  transform: scaleX(1);
+}
+
+.news-date {
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 2px;
+  color: var(--c-accent);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.news-card h3 {
+  font-family: var(--font-display);
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.news-card p {
+  font-size: 14px;
+  color: rgba(244,232,220,0.7);
+  line-height: 1.6;
+}
+    :root {
+      --bg: #0a0510;
+      --surface: #1a0d1f;
+      --text: #f4e8dc;
+      --primary: #ff5722;
+      --accent: #f9a826;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+    }
+
+    /* ===== NAV ===== */
+    .nav {
+      position: fixed;
+      top: 0;
+      width: 100%;
+      display: flex;
+      justify-content: space-between;
+      padding: 15px 40px;
+      background: rgba(10,5,16,0.9);
+      border-bottom: 1px solid rgba(255,87,34,0.2);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+    }
+
+    .nav a {
+      color: var(--text);
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 13px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* ===== CONTENT ===== */
+    .container {
+      max-width: 1000px;
+      margin: 120px auto 0;
+      padding: 20px;
+    }
+
+    h1 {
+      font-family: 'Orbitron', sans-serif;
+      font-size: 40px;
+      color: var(--accent);
+      margin-bottom: 10px;
+    }
+
+    h2 {
+      color: var(--primary);
+      margin-top: 40px;
+      margin-bottom: 10px;
+      font-family: 'Orbitron';
+    }
+
+    p {
+      line-height: 1.7;
+      margin-bottom: 15px;
+      color: rgba(244,232,220,0.8);
+    }
+
+    .box {
+      background: var(--surface);
+      padding: 20px;
+      border-radius: 10px;
+      border: 1px solid rgba(255,87,34,0.2);
+      margin-top: 20px;
+    }
+
+    input, textarea {
+      width: 100%;
+      padding: 10px;
+      margin-top: 8px;
+      background: #0a0510;
+      border: 1px solid var(--primary);
+      color: white;
+      border-radius: 6px;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      background: var(--primary);
+      border: none;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      border-radius: 6px;
+    }
+
+    button:hover {
+      background: var(--accent);
+    }
+
+
+  
+    .video-section {
+      padding: 120px 20px;
+      background: radial-gradient(circle at top, #1a0d1f, #05010a);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .video-frame {
+      margin-top: 40px;
+      width: 100%;
+      max-width: 900px;
+      aspect-ratio: 16 / 9;
+      margin-left: auto;
+      margin-right: auto;
+      border-radius: 18px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 87, 34, 0.4);
+      box-shadow: 0 0 40px rgba(255, 87, 34, 0.15);
+    }
+    
+    .video-frame iframe {
+      width: 100%;
+      height: 100%;
+    }
+    
+    .video-caption {
+      text-align: center;
+      margin-top: 18px;
+      font-size: 14px;
+      opacity: 0.7;
+    }
+    
+
+    /* ===== ПІДНІЖЖЯ ===== */
+     /* ===== FOOTER ===== */
+    footer {
+      position: relative;
+      z-index: 50;              /* завжди поверх фону */
+      width: 100%;
+      padding: 50px 20px;
+      text-align: center;
+    
+      background: rgba(10, 5, 16, 0.95);
+      backdrop-filter: blur(12px);
+    
+      border-top: 1px solid rgba(255, 87, 34, 0.25);
+      box-shadow: 0 -10px 40px rgba(0, 0, 0, 0.4);
+    }
+    
+    footer p {
+      font-size: 13px;
+      color: rgba(244, 232, 220, 0.6);
+      letter-spacing: 1px;
+      margin: 0;
+    }
+    
+    footer .footer-brand {
+      font-family: var(--font-display);
+      color: var(--c-primary);
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+ 
+    .author-section,
+    .join-section {
+      background: linear-gradient(180deg, transparent, rgba(255,87,34,0.05));
+    }
+    section {
+      background: transparent !important;
+    }
+    
+    .author-section,
+    .join-section,
+    .base-section {
+      background: transparent !important;
+    }
+    /* ===== РЕАКТИВНІСТЬ ===== */
+    @media (max-width: 980px) {
+      .nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .section-wrapper { padding: 80px 20px; }
+      .mars-planet { width: 400px; height: 400px; right: -150px; opacity: 0.25; }
+      .hero-stats { grid-template-columns: repeat(2, 1fr); gap: 12px; }
+      .mission-grid { grid-template-columns: 1fr; }
+      .base-grid { grid-template-columns: 1fr; gap: 40px; }
+      .crew-grid { grid-template-columns: repeat(2, 1fr); }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 140px; }
+      .gal-1 { grid-column: span 2; }
+      .gal-5 { grid-column: span 2; }
+      .facts-grid { grid-template-columns: repeat(2, 1fr); }
+      .timeline::before { left: 20px; }
+      .timeline-item { width: 100%; padding-left: 50px !important; padding-right: 20px !important; text-align: left !important; margin-left: 0 !important; }
+      .timeline-item::before { left: 11px !important; right: auto !important; }
+      .author-card { grid-template-columns: 1fr; text-align: center; padding: 30px 24px; }
+      .author-avatar { margin: 0 auto; }
+    }
+    @media (max-width: 560px) {
+      .hero { padding: 120px 20px 60px; }
+      .hero-stats { grid-template-columns: 1fr 1fr; }
+      .hero-stat-value { font-size: 22px; }
+      .crew-grid { grid-template-columns: 1fr; }
+      .facts-grid { grid-template-columns: 1fr; }
+    }
